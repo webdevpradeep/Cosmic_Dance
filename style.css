@@ -1,0 +1,65 @@
+body {
+  background: linear-gradient(135deg, #0d001a, #0d002a, #000000);
+  background-size: 400% 400%;
+  animation: gradientAnimation 20s ease infinite;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+canvas {
+  box-shadow: 0 0 50px rgba(0, 255, 255, 0.7), 0 0 100px rgba(255, 0, 255, 0.5),
+    0 0 150px rgba(255, 255, 0, 0.3);
+  border-radius: 10px;
+  transition: box-shadow 0.5s ease-in-out;
+  animation: flicker 2s infinite alternate;
+  position: relative;
+}
+
+canvas::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: conic-gradient(#8a2be2, #4b0082, #9400d3, #da70d6, #8a2be2);
+  border-radius: 20px;
+  z-index: -1;
+  animation: rotateGlow 5s linear infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.7),
+      0 0 100px rgba(255, 0, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.5), 0 0 80px rgba(255, 0, 255, 0.3);
+  }
+}
+
+@keyframes rotateGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
